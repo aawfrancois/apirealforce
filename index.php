@@ -1,8 +1,14 @@
 <?php
 
-require_once 'controllers/Movies.php';
+use router\Router\Router;
 
-$movies = new \Movies;
-$movies->getAllDataFiltred();
+require_once 'router/Router.php';
 
-var_dump($movies);
+$router = new Router();
+
+$router->get('/api', function () {
+    var_dump('ici');
+});
+
+$router->run();
+

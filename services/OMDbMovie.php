@@ -1,5 +1,9 @@
 <?php
 
+namespace services;
+
+use Exception;
+
 class OMDbMovie
 {
 
@@ -10,39 +14,35 @@ class OMDbMovie
         $this->apiKey = $apiKey;
     }
 
-
-    public function getMoviesByTitle(string $title): ?array
+    public function getMoviesBySearch(string $title): ?array
     {
-        $curl = curl_init();
+        try {
+            $ch = curl_init();
 
-        curl_setopt($curl, CURLOPT_URL, "https://www.omdbapi.com/?apikey={$this->apiKey}&t={$title}&plot=full");
-        var_dump($curl);
-        die();
+            curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey='. $this->apiKey .'&s='. $title);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-        $data = curl_exec($curl);
-        var_dump($data);
-        die();
+            $content = curl_exec($ch);
 
-        if ($data === false || curl_getinfo($curl, CURLINFO_HTTP_CODE) !== 200) {
-            return null;
+            if ($content === false) {
+                throw new Exception(curl_error($ch), curl_errno($ch));
+            }
+
+            $data = json_decode($content, true);
+
+        } catch(Exception $e) {
+
+            trigger_error(sprintf(
+                'Curl failed with error #%d: %s',
+                $e->getCode(), $e->getMessage()),
+                E_USER_ERROR);
+
+        } finally {
+            curl_close($ch);
         }
-        $results = [];
-        $data = json_decode($data, true);
 
         return $data;
-
-    }
-
-    public function getMoviesBySearch(string $search): ?array
-    {
-        $curl = curl_init("https://www.omdbapi.com/?apikey={$this->apiKey}&s={$search}&plot=full");
-        $data = curl_exec($curl);
-
-        if ($data === false || curl_getinfo($curl, CURLINFO_HTTP_CODE) !== 200) {
-            return null;
-        }
-        $results = [];
-        $data = json_decode($data, true);
 
     }
 }

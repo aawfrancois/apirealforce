@@ -1,6 +1,8 @@
 <?php
 
-require_once 'services/OMDbMovie.php';
+namespace controllers;
+
+use services\OMDbMovie;
 
 class Movies
 {
