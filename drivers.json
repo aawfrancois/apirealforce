@@ -1,0 +1,44 @@
+{
+  "drivers": [
+    {
+      "id": 20,
+      "name": "Lewis Hamilton",
+      "image": "https://media.api-sports.io/formula-1/drivers/20.png",
+      "bio": "Lewis Carl Davidson Hamilton MBE HonFREng is a British racing driver currently competing in Formula One for the Mercedes-AMG Petronas Formula One Team.",
+      "nationality": "British",
+      "birthdate": "1985-01-07"
+    },
+    {
+      "id": 19,
+      "name": "Sebastian Vettel",
+      "image": "https://media.api-sports.io/formula-1/drivers/19.png",
+      "bio": "Sebastian Vettel is a German racing driver who races in Formula One for Scuderia Ferrari. He is a four-time Formula One World Champion, having won consecutive titles from 2010 to 2013 with Red Bull.",
+      "nationality": "German",
+      "birthdate": "1987-07-03"
+    },
+    {
+      "id": 14,
+      "name": "Daniel Ricciardo",
+      "image": "https://media.api-sports.io/formula-1/drivers/14.png",
+      "bio": "Daniel Joseph Ricciardo is an Italian-Australian racing driver who is currently competing in Formula One, under the Australian flag, for Renault.",
+      "nationality": "Australian",
+      "birthdate": "1989-07-01"
+    },
+    {
+      "id": 25,
+      "name": "Max Verstappen",
+      "image": "https://media.api-sports.io/formula-1/drivers/25.png",
+      "bio": "Max Emilian Verstappen is a Belgian-Dutch racing driver currently competing in Formula One, under the Dutch flag, with Red Bull Racing. At the 2015 Australian Grand Prix, when he was aged 17 years, 166 days, he became the youngest driver to compete in Formula One. He holds eight other \"firsts\" in Formula One racing.",
+      "nationality": "Dutch",
+      "birthdate": "1997-09-30"
+    },
+    {
+      "id": 34,
+      "name": "Charles Leclerc",
+      "image": "https://media.api-sports.io/formula-1/drivers/34.png",
+      "bio": "Charles Leclerc is a Monégasque racing driver, currently driving in Formula One for Scuderia Ferrari. Leclerc won the GP3 Series championship in 2016 and the FIA Formula 2 Championship in 2017.",
+      "nationality": "Monégasque",
+      "birthdate": "1997-10-16"
+    }
+  ]
+}
