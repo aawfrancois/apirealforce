@@ -1,50 +1,37 @@
 <?php
 
-namespace router\Route;
+namespace router;
 
-class Router {
+class Route {
 
-    private $url;
-    private $routes = [];
-    private $namedRoutes = [];
+    private $path;
+    private $callable;
+    private $matches = [];
+    private $params = [];
 
-    public function __construct($url){
-        $this->url = $url;
+    public function __construct($path, $callable){
+        $this->path = trim($path, '/');  // On retire les / inutils
+        $this->callable = $callable;
     }
 
-    public function get($path, $callable, $name = null){
-        return $this->add($path, $callable, $name, 'GET');
+    /**
+     * Permettra de capturer l'url avec les paramètre
+     * get('/posts/:slug-:id') par exemple
+     **/
+    public function match($url){
+        $url = trim($url, '/');
+        $path = preg_replace('#:([\w]+)#', '([^/]+)', $this->path);
+        $regex = "#^$path$#i";
+        if(!preg_match($regex, $url, $matches)){
+            return false;
+        }
+        array_shift($matches);
+        $this->matches = $matches;  // On sauvegarde les paramètre dans l'instance pour plus tard
+        return true;
     }
 
-    private function add($path, $callable, $name, $method){
-        $route = new Route($path, $callable);
-        $this->routes[$method][] = $route;
-        if(is_string($callable) && $name === null){
-            $name = $callable;
-        }
-        if($name){
-            $this->namedRoutes[$name] = $route;
-        }
-        return $route;
-    }
-
-    public function run(){
-        if(!isset($this->routes[$_SERVER['REQUEST_METHOD']])){
-            throw new RouterException('REQUEST_METHOD does not exist');
-        }
-        foreach($this->routes[$_SERVER['REQUEST_METHOD']] as $route){
-            if($route->match($this->url)){
-                return $route->call();
-            }
-        }
-        throw new RouterException('No matching routes');
-    }
-
-    public function url($name, $params = []){
-        if(!isset($this->namedRoutes[$name])){
-            throw new RouterException('No route matches this name');
-        }
-        return $this->namedRoutes[$name]->getUrl($params);
+    public function call(){
+        return call_user_func_array($this->callable, $this->matches);
     }
 
 }
