@@ -11,7 +11,7 @@
             "email": "aawfrancois@gmail.com"
         }
     ],
-    "require-dev": {
+    "require": {
         "symfony/var-dumper": "^6.0"
     }
 }
