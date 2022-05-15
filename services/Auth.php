@@ -10,7 +10,7 @@ class Auth
     function getRequestHeaders(): array
     {
         $headers = array();
-        foreach($_SERVER as $key => $value) {
+        foreach ($_SERVER as $key => $value) {
             if (!str_starts_with($key, 'HTTP_')) {
                 continue;
             }
@@ -25,7 +25,7 @@ class Auth
      *
      * @return bool
      */
-    function checkTokenIsValid()
+    function checkTokenIsValid(): bool
     {
         $isAuthorized = false;
 
@@ -40,5 +40,4 @@ class Auth
 
         return $isAuthorized;
     }
-
 }

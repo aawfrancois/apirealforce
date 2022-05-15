@@ -6,7 +6,6 @@ use Exception;
 
 class OMDbMovie
 {
-
     private string $apiKey;
 
     public function __construct(string $apiKey)
@@ -25,9 +24,9 @@ class OMDbMovie
             $ch = curl_init();
 
             if ($page !== null) {
-                curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey='. $this->apiKey .'&s='. $search . '&page=' . $page);
+                curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey=' . $this->apiKey . '&s=' . $search . '&page=' . $page);
             } else {
-                curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey='. $this->apiKey .'&s='. $search);
+                curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey=' . $this->apiKey . '&s=' . $search);
             }
 
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -41,7 +40,7 @@ class OMDbMovie
 
             $data = json_decode($content, true);
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
 
             trigger_error(sprintf(
                 'Curl failed with error #%d: %s',
@@ -51,7 +50,6 @@ class OMDbMovie
         } finally {
             curl_close($ch);
         }
-
 
         return $data;
 
@@ -66,7 +64,7 @@ class OMDbMovie
         try {
             $ch = curl_init();
 
-            curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey='. $this->apiKey .'&i='. $id);
+            curl_setopt($ch, CURLOPT_URL, 'https://www.omdbapi.com/?apikey=' . $this->apiKey . '&i=' . $id);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
@@ -78,7 +76,7 @@ class OMDbMovie
 
             $data = json_decode($content, true);
 
-        } catch(Exception $e) {
+        } catch (Exception $e) {
 
             trigger_error(sprintf(
                 'Curl failed with error #%d: %s',
@@ -88,7 +86,6 @@ class OMDbMovie
         } finally {
             curl_close($ch);
         }
-
 
         return $data;
 
