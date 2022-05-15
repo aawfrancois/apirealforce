@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1197166e5e6a3a07783b9778329a2fcd",
-    "packages": [],
-    "packages-dev": [
+    "content-hash": "55ef485c69e0c9f3051bc267e98e3a54",
+    "packages": [
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.25.0",
@@ -179,6 +178,7 @@
             "time": "2022-04-26T13:22:23+00:00"
         }
     ],
+    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
