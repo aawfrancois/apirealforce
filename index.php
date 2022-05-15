@@ -8,8 +8,6 @@ require_once __DIR__ . '/services/Auth.php';
 
 $auth = new services\Auth();
 
-//20220515
-
 if (!$auth->checkTokenIsValid()) {
     http_response_code(401);
     exit();

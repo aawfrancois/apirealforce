@@ -17,3 +17,10 @@
 |--------| ----------- |
 | search | this option allows you to search for the name of the film or driver you want. |
 | page   | this option allows you to see the page you want. |
+
+
+
+## On Postman
+
+For use with postman, use the params tab to pass the parameters seen in the previous table. And the Authorization tab with the Bearer type.<br>
+Value for token === date('Ymd'); example : 20220515.
