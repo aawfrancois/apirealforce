@@ -1,34 +1,33 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
+header('Access-Control-Allow-Origin: *');
 require_once __DIR__ . '/router/Router.php';
 require_once __DIR__ . '/router/Route.php';
 require_once __DIR__ . '/controllers/Movies.php';
 require_once __DIR__ . '/controllers/Drivers.php';
 require_once __DIR__ . '/services/Auth.php';
 
-$auth = new services\Auth();
-
-if (!$auth->checkTokenIsValid()) {
-    http_response_code(401);
-    exit();
-}
-
 $router = new router\Router();
 $route = new router\Route();
 $moviesController = new controllers\Movies();
 $driversController = new controllers\Drivers();
 
-if (isset($_GET['search'])) {
-    $search = $_GET['search'];
-} else {
-    $search = '';
+$auth = new services\Auth();
+if (!$auth->checkTokenIsValid()) {
+    echo '401 unauthorized';
+    http_response_code(401);
+    exit();
 }
+
+$search = $_GET['search'] ?? '';
 
 if (isset($_GET['page']) === false) {
     $route->route('/api?search=' . $search, function () use ($driversController, $search, $moviesController) {
 
-        $driversController->getDataDriverFiltred($search);
-        $moviesController->getAllDataFiltred($search);
+        $driverArray = $driversController->getDataDriverFiltred($search);
+        $moviesArray = $moviesController->getAllDataFiltred($search);
+
+        echo json_encode(array_merge($driverArray, $moviesArray));
     });
 } else {
     $page = $_GET['page'];
