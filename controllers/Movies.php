@@ -9,9 +9,9 @@ class Movies
     /**
      * @param $search
      * @param $page
-     * @return void
+     * @return array
      */
-    public function getAllDataFiltred($search, $page = null)
+    public function getAllDataFiltred($search, $page = null): array
     {
         require_once('./services/OMDbMovie.php');
 
@@ -22,7 +22,7 @@ class Movies
 
         if ($arraySearchMovies['Response'] === "True") {
             foreach ($arraySearchMovies['Search'] as $movies) {
-                $result[] = [
+                $result['movies'][] = [
                     'id' => $movies['imdbID'],
                     'dataType' => $movies['Type'],
                     'name' => $movies['Title'],
@@ -31,9 +31,9 @@ class Movies
                 ];
             }
         } else {
-            echo json_encode($arraySearchMovies);
+            return $arraySearchMovies;
         }
 
-        echo json_encode($result);
+        return $result;
     }
 }

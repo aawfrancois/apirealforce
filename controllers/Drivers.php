@@ -8,9 +8,9 @@ class Drivers
 {
     /**
      * @param string $search
-     * @return void
+     * @return array
      */
-    public function getDataDriverFiltred(string $search)
+    public function getDataDriverFiltred(string $search): array
     {
         require_once('./services/JSONDrivers.php');
 
@@ -22,7 +22,7 @@ class Drivers
         foreach ($arrayDrivers['drivers'] as $driver) {
             $find = str_contains(strtolower($driver['name']), strtolower($search));
             if ($find === true) {
-                $drivers[] = [
+                $drivers['driver'] = [
                     'id' => $driver['id'],
                     'dataType' => 'driver',
                     'name' => $driver['name'],
@@ -32,6 +32,6 @@ class Drivers
             }
         }
 
-        echo json_encode($drivers);
+        return $drivers;
     }
 }
