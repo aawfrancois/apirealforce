@@ -1,0 +1,17 @@
+{
+    "name": "antoi/api-realforce",
+    "autoload": {
+        "psr-4": {
+            "Antoi\\ApiRealforce\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aawfrancois",
+            "email": "aawfrancois@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "symfony/var-dumper": "^6.0"
+    }
+}
