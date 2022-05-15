@@ -17,5 +17,3 @@
 |--------| ----------- |
 | search | this option allows you to search for the name of the film or driver you want. |
 | page   | this option allows you to see the page you want. |
-
-
