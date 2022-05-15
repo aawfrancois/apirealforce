@@ -5,16 +5,17 @@ namespace router;
 /**
  * Class Router.
  */
-class Router {
-
+class Router
+{
     /**
      * @return void
      */
-    function run()
+    function run(): void
     {
         global $routes;
         $uri = $_SERVER['REQUEST_URI'];
         $found = false;
+
         foreach ($routes as $path => $callback) {
             if ($path !== $uri) continue;
 

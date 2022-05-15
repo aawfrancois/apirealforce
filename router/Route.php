@@ -2,7 +2,8 @@
 
 namespace router;
 
-class Route {
+class Route
+{
 
     /**
      * @param string $path
