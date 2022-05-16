@@ -1,18 +1,15 @@
 <?php
-require __DIR__ . '/vendor/autoload.php';
+require '../vendor/autoload.php';
 header('Access-Control-Allow-Origin: *');
-require_once __DIR__ . '/Router/Router.php';
-require_once __DIR__ . '/Router/Route.php';
-require_once __DIR__ . '/Controllers/Movies.php';
-require_once __DIR__ . '/Controllers/Drivers.php';
-require_once __DIR__ . '/Services/Auth.php';
 
-$router = new router\Router();
-$route = new router\Route();
+$router = new \App\Router\Router();
+
+
+
 $moviesController = new controllers\Movies();
 $driversController = new controllers\Drivers();
 
-$auth = new services\Auth();
+$auth = new Services\Auth();
 if (!$auth->checkTokenIsValid()) {
     echo '401 unauthorized';
     http_response_code(401);

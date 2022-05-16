@@ -1,8 +1,9 @@
 {
-    "name": "antoi/api-realforce",
+    "name": "aawfrancois/api-realforce",
+    "description": "Api technical test RealForce",
     "autoload": {
         "psr-4": {
-            "App\\": "../apiRealforce/"
+            "App\\": "app/"
         }
     },
     "authors": [
@@ -11,7 +12,5 @@
             "email": "aawfrancois@gmail.com"
         }
     ],
-    "require": {
-        "symfony/var-dumper": "^6.0"
-    }
+    "require": {}
 }

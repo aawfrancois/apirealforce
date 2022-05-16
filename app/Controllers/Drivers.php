@@ -1,8 +1,6 @@
 <?php
 
-namespace controllers;
-
-use services\JSONDrivers;
+namespace Controllers;
 
 class Drivers
 {

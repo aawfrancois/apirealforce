@@ -1,6 +1,6 @@
 <?php
 
-namespace router;
+namespace App\Router;
 
 /**
  * Class Router.
@@ -10,13 +10,15 @@ class Router
     /**
      * @return void
      */
+
+    public array $routes = [];
+
     function run(): void
     {
-        global $routes;
         $uri = $_SERVER['REQUEST_URI'];
         $found = false;
 
-        foreach ($routes as $path => $callback) {
+        foreach ($this->routes as $path => $callback) {
             if ($path !== $uri) continue;
 
             $found = true;
@@ -24,8 +26,16 @@ class Router
         }
 
         if (!$found) {
-            $notFoundCallback = $routes['/404'];
+            $notFoundCallback = $this->routes['/404'];
             $notFoundCallback();
         }
     }
+    public function addRoute(string $name, string $path, callable $callable): void
+    {
+        $this->routes[$name] = [
+            'path' => $path,
+            'callable' => $callable,
+        ];
+    }
+
 }

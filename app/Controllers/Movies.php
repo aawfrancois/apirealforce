@@ -1,8 +1,6 @@
 <?php
 
-namespace controllers;
-
-use services\OMDbMovie;
+namespace App\Controllers;
 
 class Movies
 {

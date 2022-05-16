@@ -1,8 +1,6 @@
 <?php
 
-namespace services;
-
-use Exception;
+namespace App\Services;
 
 class OMDbMovie
 {
@@ -17,6 +15,7 @@ class OMDbMovie
      * @param string $search
      * @param $page
      * @return array|null
+     * @throws \Exception
      */
     public function getMoviesBySearch(string $search, $page = null): ?array
     {
@@ -35,12 +34,12 @@ class OMDbMovie
             $content = curl_exec($ch);
 
             if ($content === false) {
-                throw new Exception(curl_error($ch), curl_errno($ch));
+                throw new \Exception(curl_error($ch), curl_errno($ch));
             }
 
             $data = json_decode($content, true);
 
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
 
             trigger_error(sprintf(
                 'Curl failed with error #%d: %s',
