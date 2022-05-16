@@ -2,7 +2,7 @@
     "name": "antoi/api-realforce",
     "autoload": {
         "psr-4": {
-            "Antoi\\ApiRealforce\\": "src/"
+            "App\\": "../apiRealforce/"
         }
     },
     "authors": [

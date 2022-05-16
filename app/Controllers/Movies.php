@@ -13,7 +13,7 @@ class Movies
      */
     public function getAllDataFiltred($search, $page = null): array
     {
-        require_once('./services/OMDbMovie.php');
+        require_once('./Services/OMDbMovie.php');
 
         $moviesService = new OMDbMovie('d744f309');
         $arraySearchMovies = $moviesService->getMoviesBySearch((string) $search, $page);

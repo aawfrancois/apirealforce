@@ -31,7 +31,7 @@ class Auth
 
         $headers = $this->getRequestHeaders();
 
-        if (isset($headers['Authorization'])) {
+            if (isset($headers['Authorization'])) {
             $authorization = explode(" ", $headers['Authorization']);
             if ($authorization[0] === 'Bearer' && $authorization[1] === date('Ymd')) {
                 $isAuthorized = true;

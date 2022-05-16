@@ -1,11 +1,11 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 header('Access-Control-Allow-Origin: *');
-require_once __DIR__ . '/router/Router.php';
-require_once __DIR__ . '/router/Route.php';
-require_once __DIR__ . '/controllers/Movies.php';
-require_once __DIR__ . '/controllers/Drivers.php';
-require_once __DIR__ . '/services/Auth.php';
+require_once __DIR__ . '/Router/Router.php';
+require_once __DIR__ . '/Router/Route.php';
+require_once __DIR__ . '/Controllers/Movies.php';
+require_once __DIR__ . '/Controllers/Drivers.php';
+require_once __DIR__ . '/Services/Auth.php';
 
 $router = new router\Router();
 $route = new router\Route();
@@ -36,7 +36,6 @@ if (isset($_GET['page']) === false) {
         $moviesController->getAllDataFiltred($search, (string) $page);
     });
 }
-
 
 $route->route('/404', function () {
     echo "Page not found";
