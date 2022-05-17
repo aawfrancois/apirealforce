@@ -19,6 +19,7 @@ class Router
      */
     public function run(): self
     {
+        var_dump('ici'); die();
         $uri = $_SERVER['REQUEST_URI'];
         $found = false;
 
