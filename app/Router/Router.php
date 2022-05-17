@@ -19,11 +19,14 @@ class Router
      */
     public function run(): self
     {
-        var_dump('ici'); die();
         $uri = $_SERVER['REQUEST_URI'];
         $found = false;
 
         foreach ($this->routes as $route) {
+            var_dump(parse_url($uri));
+            var_dump($route['path']);
+            var_dump($route['method']);
+            var_dump(strtolower($_SERVER['REQUEST_METHOD']);
             $parsedUrl = parse_url($uri);
             if ($parsedUrl === false) {
                 continue;
