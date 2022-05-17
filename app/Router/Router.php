@@ -27,9 +27,6 @@ class Router
             if ($parsedUrl === false) {
                 continue;
             }
-            var_dump($route['path']);
-            var_dump($parsedUrl['path']);
-            die();
             if ($route['path'] !== $parsedUrl['path'] || $route['method'] !== strtolower($_SERVER['REQUEST_METHOD'])) {
                 continue;
             }

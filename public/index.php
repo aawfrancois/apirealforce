@@ -1,6 +1,4 @@
 <?php
-var_dump('ici'); die();
-
 require '../vendor/autoload.php';
 header('Access-Control-Allow-Origin: *');
 
