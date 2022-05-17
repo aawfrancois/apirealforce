@@ -10,8 +10,6 @@
 
 ## Options for Api
 
- <span style="color: red;">**WARNING**: Respect the order of the options described in the following table</span>
-
 
 | Option | Description |
 |--------| ----------- |
