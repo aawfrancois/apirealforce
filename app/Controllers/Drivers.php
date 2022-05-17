@@ -1,32 +1,31 @@
 <?php
 
-namespace Controllers;
+namespace App\Controllers;
 
 class Drivers
 {
     /**
-     * @param string $search
      * @return array
      */
-    public function getDataDriverFiltred(string $search): array
+    public function getDataDriverFiltred(): array
     {
-        require_once('./Services/JSONDrivers.php');
-
-        $driversService = new JSONDrivers();
+        $driversService = new \App\Services\JSONDrivers();
         $arrayDrivers = $driversService->getDrivers();
 
         $drivers = [];
 
-        foreach ($arrayDrivers['drivers'] as $driver) {
-            $find = str_contains(strtolower($driver['name']), strtolower($search));
-            if ($find === true) {
-                $drivers['driver'] = [
-                    'id' => $driver['id'],
-                    'dataType' => 'driver',
-                    'name' => $driver['name'],
-                    'description' => $driver['bio'],
-                    'photoUrl' => $driver['image'],
-                ];
+        if (isset($_GET['search'])) {
+            foreach ($arrayDrivers['drivers'] as $driver) {
+                $find = str_contains(strtolower($driver['name']), strtolower($_GET['search']));
+                if ($find === true) {
+                    $drivers['driver'] = [
+                        'id' => $driver['id'],
+                        'dataType' => 'driver',
+                        'name' => $driver['name'],
+                        'description' => $driver['bio'],
+                        'photoUrl' => $driver['image'],
+                    ];
+                }
             }
         }
 

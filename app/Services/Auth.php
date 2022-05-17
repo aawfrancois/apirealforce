@@ -7,7 +7,7 @@ class Auth
     /**
      * @return array
      */
-    function getRequestHeaders(): array
+    public function getRequestHeaders(): array
     {
         $headers = array();
         foreach ($_SERVER as $key => $value) {
@@ -25,7 +25,7 @@ class Auth
      *
      * @return bool
      */
-    function checkTokenIsValid(): bool
+    public function checkTokenIsValid(): bool
     {
         $isAuthorized = false;
 

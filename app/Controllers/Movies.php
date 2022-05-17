@@ -2,19 +2,29 @@
 
 namespace App\Controllers;
 
-class Movies
+class Movies extends \App\Controller
 {
     /**
-     * @param $search
-     * @param $page
-     * @return array
+     * @return void
      */
-    public function getAllDataFiltred($search, $page = null): array
+    public function search(): void
     {
-        require_once('./Services/OMDbMovie.php');
+        $search = null;
+        $page = null;
 
-        $moviesService = new OMDbMovie('d744f309');
-        $arraySearchMovies = $moviesService->getMoviesBySearch((string) $search, $page);
+        if (array_key_exists('search', $_GET)) {
+            $search = trim($_GET['search']);
+        }
+        if (array_key_exists('page', $_GET)) {
+            $page = (int)$_GET['page'];
+        }
+
+        if ($search === null) {
+            \App\Router\Router::throw400();
+        }
+
+        $moviesService = new \App\Services\OMDbMovie();
+        $arraySearchMovies = $moviesService->search($search, $page);
 
         $result = [];
 
@@ -24,14 +34,18 @@ class Movies
                     'id' => $movies['imdbID'],
                     'dataType' => $movies['Type'],
                     'name' => $movies['Title'],
-                    'description' =>  $moviesService->getMoviesById($movies['imdbID'])['Plot'],
+                    'description' => $moviesService->getMoviesById($movies['imdbID'])['Plot'],
                     'photoUrl' => $movies['Poster'],
                 ];
             }
         } else {
-            return $arraySearchMovies;
+            $this->renderJson($arraySearchMovies);
         }
 
-        return $result;
+        $driversController = new \App\Controllers\Drivers();
+
+        $driverArray = $driversController->getDataDriverFiltred();
+
+        $this->renderJson(array_merge($driverArray, $result));
     }
 }
