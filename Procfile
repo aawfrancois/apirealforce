@@ -1,1 +1,1 @@
-web: heroku-php-apache2 apiRealforce/
+web: heroku-php-apache2 public/
