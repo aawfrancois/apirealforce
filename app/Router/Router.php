@@ -26,7 +26,8 @@ class Router
             var_dump(parse_url($uri));
             var_dump($route['path']);
             var_dump($route['method']);
-            var_dump(strtolower($_SERVER['REQUEST_METHOD']);
+            var_dump(strtolower($_SERVER['REQUEST_METHOD']));
+            die();
             $parsedUrl = parse_url($uri);
             if ($parsedUrl === false) {
                 continue;
