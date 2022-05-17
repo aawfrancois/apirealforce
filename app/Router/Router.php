@@ -23,15 +23,13 @@ class Router
         $found = false;
 
         foreach ($this->routes as $route) {
-            var_dump(parse_url($uri));
-            var_dump($route['path']);
-            var_dump($route['method']);
-            var_dump(strtolower($_SERVER['REQUEST_METHOD']));
-            die();
             $parsedUrl = parse_url($uri);
             if ($parsedUrl === false) {
                 continue;
             }
+            var_dump($route['path']);
+            var_dump($parsedUrl['path']);
+            die();
             if ($route['path'] !== $parsedUrl['path'] || $route['method'] !== strtolower($_SERVER['REQUEST_METHOD'])) {
                 continue;
             }
