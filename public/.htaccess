@@ -1,3 +1,0 @@
-RewriteEngine on
-RewriteCond $1 !^(__files|app) [NC]
-RewriteRule  (.*)  public/$1  [L]
