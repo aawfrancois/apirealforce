@@ -8,7 +8,7 @@ $auth = new \App\Services\Auth();
 if (!$auth->checkTokenIsValid()) {
     \App\Router\Router::throw401();
 }
-
+var_dump('ici'); die();
 $router->addRoute('search-get', 'get', '/search', '\App\Controllers\Movies@search');
 
 $router->run();
