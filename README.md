@@ -3,7 +3,9 @@
 
 ## Technical test Api Realforce
 
-##### <span style="align: center">You can access the API via [Api Link](https://apirealforce.herokuapp.com/search).</span>
+##### <span style="align: center">You can access the API via [Api](https://apirealforce.herokuapp.com/search).</span>
+
+##### <span style="align: center">You can access the API via [Documentation Api](https://app.swaggerhub.com/apis-docs/aawfrancois/apiRealforce/1.0.0#/developers/get_search).</span>
 
 ##### This api allows you to find both a Formula 1 driver and the movies that are linked to his name
 
